@@ -2,7 +2,7 @@ var socket = io();
 
 socket.on('connect', function () {
     console.log("Client has been connected to the server.");
-
+    socket.emit('greetings');
 });
 
 socket.on('disconnect', function () {
