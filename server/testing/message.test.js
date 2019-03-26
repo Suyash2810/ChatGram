@@ -12,4 +12,15 @@ describe("Message generation", () => {
 
         done();
     });
+
+    it("should return the generated url.", (done) => {
+        var url = message.generateLocationMessage("Andrew", 45.1454, 46.454785);
+        var genurl = 'https://www.google.com/maps?q=45.1454,46.454785';
+
+        expect(url.from).toBe("Andrew");
+        expect(url.url).toBeTruthy();
+        expect(url.url).toBe(genurl);
+        expect(url.timeStamp).toBeTruthy();
+        done();
+    });
 });
