@@ -8,38 +8,21 @@ var app = express();
 const port = process.env.PORT || 3000;
 var server = http.createServer(app);
 var io = socketIO(server);
+var genMessage = require('./utilities/messages').generateMessage;
 
 io.on('connection', (socket) => {
     console.log("Connected to the user.");
 
     socket.on('greetings', () => {
 
-        socket.emit('newMessage', {
-            from: 'Admin',
-            text: 'Welcome to the chat app',
-            timeStamp: new Date().getTime()
-        });
+        socket.emit('newMessage', genMessage("Admin", "Welcome to the chat app."));
 
-        socket.broadcast.emit('newMessage', {
-            from: 'Admin',
-            text: 'A new user has joined the app.',
-            timeStamp: new Date().getTime()
-        })
+        socket.broadcast.emit('newMessage', genMessage("Admin", "A new user has joined the app."));
     });
 
     socket.on('createMessage', (message) => {
         console.log('Message received from the client', message);
-        io.emit('newMessage', {
-            from: message.from,
-            text: message.text,
-            timeStamp: new Date()
-        });
-
-        // socket.broadcast.emit('newMessage', {
-        //     from: message.from,
-        //     text: message.text,
-        //     timeStamp: new Date().getTime()
-        // });
+        io.emit('newMessage', genMessage(message.from, message.text));
     });
 
     socket.on('disconnect', () => {
