@@ -21,6 +21,20 @@ socket.on(
     }
 );
 
+socket.on('newLocationMessage', function (LocaMessage) {
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.appendChild(document.createTextNode(`Visit Here.`));
+    console.log(LocaMessage.url);
+    a.href = LocaMessage.url;
+    a.target = "_blank";
+    a.style.textDecoration = 'none';
+    var text = document.createTextNode(`From: ${LocaMessage.from} -- `);
+    li.appendChild(text);
+    li.appendChild(a);
+    document.getElementById('list_users').appendChild(li);
+});
+
 window.onload = function () {
 
     document.getElementById('message_form').addEventListener('submit', (e) => {
@@ -34,5 +48,25 @@ window.onload = function () {
         }, function (data) {
             console.log(data);
         });
+    });
+
+    var LocationBtn = document.getElementById('getLocation');
+
+    LocationBtn.addEventListener('click', () => {
+
+        if (!navigator.geolocation) {
+            alert('Geolocation is not supported by your browser.');
+        } else {
+            navigator.geolocation.getCurrentPosition((position) => {
+                    socket.emit('createLocationMessage', {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude
+                    });
+                    console.log(position);
+                },
+                (error) => {
+                    alert("Unable to fetch the location.", error);
+                });
+        }
     });
 }
