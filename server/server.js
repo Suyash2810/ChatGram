@@ -20,9 +20,9 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('newMessage', genMessage("Admin", "A new user has joined the app."));
     });
 
-    socket.on('createMessage', (message) => {
-        console.log('Message received from the client', message);
+    socket.on('createMessage', (message, callback) => {
         io.emit('newMessage', genMessage(message.from, message.text));
+        callback("This is an acknowledgement message.");
     });
 
     socket.on('disconnect', () => {

@@ -15,3 +15,10 @@ socket.on(
         console.log("New message has been received.", newMessage);
     }
 );
+
+socket.emit('createMessage', {
+    from: "Tallis",
+    text: "Hello people."
+}, function (data) {
+    console.log(data);
+});
