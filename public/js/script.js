@@ -13,9 +13,9 @@ socket.on(
     'newMessage',
     function (newMessage) {
         console.log("New message has been received.", newMessage);
-
+        var createdTime = moment(newMessage.timeStamp).format('h:mm a');
         var li = document.createElement('li');
-        var text = document.createTextNode(`From: ${newMessage.from}, Text: ${newMessage.text}`);
+        var text = document.createTextNode(`From: ${newMessage.from} - ${createdTime}, Text: ${newMessage.text}`);
         li.appendChild(text);
         document.getElementById('list_users').appendChild(li);
     }
@@ -29,7 +29,8 @@ socket.on('newLocationMessage', function (LocaMessage) {
     a.href = LocaMessage.url;
     a.target = "_blank";
     a.style.textDecoration = 'none';
-    var text = document.createTextNode(`From: ${LocaMessage.from} -- `);
+    var createdTime = moment(LocaMessage.timeStamp).format('h:mm a');
+    var text = document.createTextNode(`From: ${LocaMessage.from} -- ${createdTime} `);
     li.appendChild(text);
     li.appendChild(a);
     document.getElementById('list_users').appendChild(li);
