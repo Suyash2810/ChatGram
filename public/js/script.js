@@ -40,13 +40,13 @@ window.onload = function () {
     document.getElementById('message_form').addEventListener('submit', (e) => {
         e.preventDefault();
 
-        var text = document.getElementById('text_field').value;
+        var text = document.getElementById('text_field');
         socket.emit('createMessage', {
             from: "User",
-            text: text,
+            text: text.value,
             timeStamp: new Date().getTime()
-        }, function (data) {
-            console.log(data);
+        }, function () {
+            text.value = '';
         });
     });
 
@@ -56,17 +56,25 @@ window.onload = function () {
 
         if (!navigator.geolocation) {
             alert('Geolocation is not supported by your browser.');
-        } else {
-            navigator.geolocation.getCurrentPosition((position) => {
-                    socket.emit('createLocationMessage', {
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude
-                    });
-                    console.log(position);
-                },
-                (error) => {
-                    alert("Unable to fetch the location.", error);
-                });
         }
+        LocationBtn.setAttribute('disabled', 'disabled');
+        LocationBtn.innerText = "Sending location";
+
+
+        navigator.geolocation.getCurrentPosition((position) => {
+                socket.emit('createLocationMessage', {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                });
+                LocationBtn.removeAttribute('disabled');
+                LocationBtn.innerText = "Send location";
+                console.log(position);
+            },
+            (error) => {
+                alert("Unable to fetch the location.", error);
+                LocationBtn.removeAttribute('disabled');
+                LocationBtn.innerText = "Send location";
+            });
+
     });
 }
