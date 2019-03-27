@@ -36,17 +36,23 @@ socket.on(
 
 socket.on('newLocationMessage', function (LocaMessage) {
     var li = document.createElement('li');
-    var a = document.createElement('a');
-    a.appendChild(document.createTextNode(`Visit Here.`));
-    console.log(LocaMessage.url);
-    a.href = LocaMessage.url;
-    a.target = "_blank";
-    a.style.textDecoration = 'none';
     var createdTime = moment(LocaMessage.timeStamp).format('h:mm a');
-    var text = document.createTextNode(`From: ${LocaMessage.from} -- ${createdTime} `);
-    li.appendChild(text);
-    li.appendChild(a);
+    var template = document.getElementById('location_template').innerHTML;
+    var data = {
+        from: LocaMessage.from,
+        createdTime: createdTime,
+        url: LocaMessage.url
+    };
+    var locationTemplate = Mustache.render(template, data);
+
+    li.innerHTML = locationTemplate;
     document.getElementById('list_users').appendChild(li);
+
+
+    // var text = document.createTextNode(`From: ${LocaMessage.from} -- ${createdTime} `);
+    // li.appendChild(text);
+    // li.appendChild(a);
+    // document.getElementById('list_users').appendChild(li);
 });
 
 window.onload = function () {

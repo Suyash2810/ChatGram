@@ -20,3 +20,37 @@
 #text_field {
     width: 200%;
 }
+
+@media only screen and (min-width: 1200px) {
+    #bottom_footer {
+        width: 260%;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    #bottom_footer {
+        width: 210%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    #bottom_footer {
+        width: 190%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    #bottom_footer {
+        width: 110%;
+    }
+
+    #text_field {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #bottom_footer {
+        width: 90%;
+    }
+}

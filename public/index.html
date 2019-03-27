@@ -13,17 +13,17 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 col-sm-2">
+            <div class="col-md-2 col-sm-2 col-xs-4">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12" id="left_panel" style="height: 500px;">
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="left_panel" style="height: 500px;">
                         <h3>People Connected</h3>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-10 col-sm-10" id="NavBar">
+            <div class="col-md-10 col-sm-10 col-xs-8" id="NavBar">
                 <div class="row">
-                    <div class="col-md-12" style="margin:0;padding:0;">
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0;padding:0;">
                         <nav class="navbar navbar-inverse">
                             <div class="container-fluid">
                                 <div class="navbar-header">
@@ -47,25 +47,26 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <div>
-                            <ul id="list_users"></ul>
+                            <ul id="list_users" style="list-style-type:none;"></ul>
                         </div>
                     </div>
                 </div>
                 <div class="row" style="position:fixed;bottom:0;">
-                    <div class="col-md-12" style="height:70px;background-color:whitesmoke;width: 1150px;">
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="height:70px;background-color:whitesmoke;"
+                        id="bottom_footer">
                         <div class="row" style="margin-top:15px;">
-                            <div class="col-md-12">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
                                 <form id="message_form" class="form-inline">
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" placeholder="Hey!"
                                                     id="text_field">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-6 col-xs-6">
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                             &nbsp;&nbsp;
                                             <button type="button" id="getLocation" class="btn btn-primary">Get
@@ -82,7 +83,45 @@
     </div>
 
     <script id="messaging_template" type="text/template">
-        <p>From: {{from}} - {{createdTime}} - {{text}}</p>
+
+        <div class="panel panel-default" style="width:200px;">
+            <div class="panel-header">
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p style="margin-left:5px;font-family:'Source Sans Pro', sans-serif;
+                         color:black;font-weight:bold;font-size:16px;">
+                            {{from}}
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6" style="color:gray;">{{createdTime}}</div>
+                </div>
+            </div>
+            <div class="panel-body">
+                {{text}}
+            </div>
+        </div>
+    
+    </script>
+
+    <script id="location_template" type="text/template">
+
+        <div class="panel panel-default" style="width:200px;">
+            <div class="panel-header">
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-6">
+                        <p style="margin-left:5px;font-family:'Source Sans Pro', sans-serif;
+                         color:black;font-weight:bold;font-size:16px;">
+                            {{from}}
+                        </p>
+                    </div>
+                    <div class="col-md-6" style="color:gray;">{{createdTime}}</div>
+                </div>
+            </div>
+            <div class="panel-body">
+               Location: <a href={{url}} target="_blank" style="text-decoration:none;color:darkblue;">Visit Here</a>
+            </div>
+        </div>
+    
     </script>
 
     <script src="/socket.io/socket.io.js"></script>
