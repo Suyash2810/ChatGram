@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+#left_panel {
+    background-image: url('../imgs/3b53e22ce8f7ffdc9a504954fb6644bf.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 24px;
+}
+
+#footer {
+    position: fixed;
+}
+
+#text_field {
+    width: 200%;
+}
