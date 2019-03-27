@@ -12,12 +12,25 @@ socket.on('disconnect', function () {
 socket.on(
     'newMessage',
     function (newMessage) {
-        console.log("New message has been received.", newMessage);
+
+        var template = document.getElementById('messaging_template').innerHTML;
         var createdTime = moment(newMessage.timeStamp).format('h:mm a');
-        var li = document.createElement('li');
-        var text = document.createTextNode(`From: ${newMessage.from} - ${createdTime}, Text: ${newMessage.text}`);
-        li.appendChild(text);
+        let data = {
+            from: newMessage.from,
+            createdTime: createdTime,
+            text: newMessage.text
+        };
+        var msgTemplate = Mustache.render(template, data);
+        let li = document.createElement('li');
+        li.innerHTML = msgTemplate;
         document.getElementById('list_users').appendChild(li);
+
+        // console.log("New message has been received.", newMessage);
+        // var createdTime = moment(newMessage.timeStamp).format('h:mm a');
+        // var li = document.createElement('li');
+        // var text = document.createTextNode(`From: ${newMessage.from} - ${createdTime}, Text: ${newMessage.text}`);
+        // li.appendChild(text);
+        // document.getElementById('list_users').appendChild(li);
     }
 );
 
