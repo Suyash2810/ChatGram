@@ -1,5 +1,28 @@
 var socket = io();
 
+function automaticScrolling() {
+
+    var messages_list = $('#list_users'),
+        last_message = messages_list.children('li:last-child');
+
+    var clientHeight = $('#right_content_panel').prop('clientHeight'),
+        scrollTop = $('#right_content_panel').prop('scrollTop'),
+        scrollHeight = $('#right_content_panel').prop('scrollHeight'),
+        lastMessageHeight = last_message.innerHeight(),
+        secondLastMessageHeight = last_message.prev().innerHeight();
+
+    //conditions
+
+    if (clientHeight + scrollTop + lastMessageHeight + secondLastMessageHeight >= scrollHeight) {
+        //     console.log("should scroll.");
+        //     console.log(clientHeight + ' ' + scrollTop + ' ' + lastMessageHeight + ' ' + secondLastMessageHeight + ' ' + scrollHeight);
+
+        $('#right_content_panel').scrollTop(scrollHeight);
+    }
+
+
+}
+
 socket.on('connect', function () {
     console.log("Client has been connected to the server.");
     socket.emit('greetings');
@@ -24,7 +47,7 @@ socket.on(
         let li = document.createElement('li');
         li.innerHTML = msgTemplate;
         document.getElementById('list_users').appendChild(li);
-
+        automaticScrolling();
         // console.log("New message has been received.", newMessage);
         // var createdTime = moment(newMessage.timeStamp).format('h:mm a');
         // var li = document.createElement('li');
@@ -48,7 +71,7 @@ socket.on('newLocationMessage', function (LocaMessage) {
     li.innerHTML = locationTemplate;
     document.getElementById('list_users').appendChild(li);
 
-
+    automaticScrolling();
     // var text = document.createTextNode(`From: ${LocaMessage.from} -- ${createdTime} `);
     // li.appendChild(text);
     // li.appendChild(a);
@@ -78,7 +101,7 @@ window.onload = function () {
             alert('Geolocation is not supported by your browser.');
         }
         LocationBtn.setAttribute('disabled', 'disabled');
-        LocationBtn.innerText = "Sending location";
+        // LocationBtn.innerText = "Sending location";
 
 
         navigator.geolocation.getCurrentPosition((position) => {
@@ -87,13 +110,13 @@ window.onload = function () {
                     longitude: position.coords.longitude
                 });
                 LocationBtn.removeAttribute('disabled');
-                LocationBtn.innerText = "Send location";
+                // LocationBtn.innerText = "Send location";
                 console.log(position);
             },
             (error) => {
                 alert("Unable to fetch the location.", error);
                 LocationBtn.removeAttribute('disabled');
-                LocationBtn.innerText = "Send location";
+                // LocationBtn.innerText = "Send location";
             });
 
     });
