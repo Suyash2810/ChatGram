@@ -1,0 +1,50 @@
+body {
+    padding-top: 4.2rem;
+    padding-bottom: 4.2rem;
+    background-color: #2c3e50;
+}
+
+#form_row_top {
+    margin-top: 12%;
+}
+
+#submitBtn {
+    background-color: #2c3e50;
+    color: white;
+    margin-top: 10px;
+}
+
+/* Extra small devices (phones, 600px and down xs) */
+@media only screen and (max-width: 600px) {
+    #form_row_top {
+        margin-top: 30%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up to 768px xs) */
+@media only screen and (min-width: 375px) and (min-height: 812px) {
+    #form_row_top {
+        margin-top: 30%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up to 992px sm) */
+@media only screen and (min-width: 768px) and (min-height: 1024px) {
+    #form_row_top {
+        margin-top: 30%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up to 1199px md) */
+@media only screen and (min-width: 992px) and (min-height: 1200px) {
+    #form_row_top {
+        margin-top: 30%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up lg) */
+@media only screen and (min-width: 1200px) {
+    #form_row_top {
+        margin-top: 12%;
+    }
+}
