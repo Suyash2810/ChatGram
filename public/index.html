@@ -8,6 +8,7 @@
     <title>Chat IO App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="./imgs/cellphone-device-display-699122.jpg" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="./styles/style.css" type="text/css">
 </head>
 
@@ -169,23 +170,21 @@
 
     <script id="messaging_template" type="text/template">
 
-        <div class="panel panel-default" style="width:200px;">
-            <div class="panel-header">
-                <div class="row" style="margin-top:5px;">
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                        <p style="margin-left:5px;font-family:'Source Sans Pro', sans-serif;
-                         color:black;font-weight:bold;font-size:16px;">
-                            {{from}}
-                        </p>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6" style="color:gray;">{{createdTime}}</div>
-                </div>
+        <div id="msg_body">
+            <div id="msg_header">
+                    <p id="msg_text">
+                            <i class="fa fa-circle"></i> &nbsp; {{from}}
+                    </p>
             </div>
-            <div class="panel-body">
-                {{text}}
+            <div id="msg_data">
+                    <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <p id="msg_data_content">{{text}}</p>
+                                    <p id="msg_time">{{createdTime}}</p>
+                            </div>
+                    </div>
             </div>
         </div>
-    
     </script>
 
     <script id="location_template" type="text/template">

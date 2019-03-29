@@ -1,4 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+/* 
 
 #left_panel {
     background-image: url('../imgs/3b53e22ce8f7ffdc9a504954fb6644bf.jpg');
@@ -627,4 +628,58 @@ body #right_content_panel {
         width: 40px;
         height: 35px;
     }
+}
+
+/* Header section of the message */
+#msg_body {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 20px;
+}
+
+#msg_header {
+    text-align: left;
+    margin-top: 10px;
+
+}
+
+#msg_text {
+    font-size: 16px;
+    color: black;
+}
+
+.fa.fa-circle {
+    color: green;
+}
+
+/* Body section of the message */
+
+#msg_data {
+    border-radius: 20px;
+    font-size: 15px;
+    color: white;
+    background-color: #476481;
+    min-width: 10px;
+    max-width: 300px;
+    min-height: 25px;
+}
+
+#msg_data_content {
+    margin-top: 7px;
+    margin-left: 16px;
+    margin-bottom: 8px;
+    margin-right: 10px;
+    word-wrap: break-word;
+    float: left;
+}
+
+
+/* Footer section of the message. */
+
+#msg_time {
+    text-align: right;
+    float: right;
+    margin-top: 7px;
+    margin-left: 16px;
+    margin-bottom: 8px;
+    margin-right: 10px;
 }
