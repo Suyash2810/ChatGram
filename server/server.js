@@ -20,19 +20,25 @@ var {
 io.on('connection', (socket) => {
     console.log("Connected to the user.");
 
-    socket.on('greetings', () => {
-
-        socket.emit('newMessage', generateMessage("Admin", "Welcome to the chat app."));
-
-        socket.broadcast.emit('newMessage', generateMessage("Admin", "A new user has joined the app."));
-    });
-
     socket.on('join', (params, callback) => {
 
         if (!validString(params.name) || !validString(params.chat)) {
 
             callback("Please enter a valid name and chat room.");
         }
+
+        // When there is no error then we have to join the user to the particular room
+
+        socket.join(params.chat);
+
+        // Sending greetings to the new user who has just joined the particular room
+
+        socket.on('greetings', () => {
+
+            socket.emit('newMessage', generateMessage("Admin", `Welcome to the chat app. You're in room ${params.chat}.`));
+
+            socket.broadcast.to(params.chat).emit('newMessage', generateMessage("Admin", `${params.name} has joined the app.`));
+        });
 
         callback();
     });

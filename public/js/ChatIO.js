@@ -26,16 +26,16 @@ function automaticScrolling() {
 socket.on('connect', function () {
     var params = $.inverse_param(window.location.search);
 
-    socket.emit('greetings');
-
     socket.emit('join', params, function (error) {
         if (error) {
             alert(error);
             window.location.href = '/';
         } else {
             console.log("No error");
+
         }
     });
+    socket.emit('greetings');
 });
 
 socket.on('disconnect', function () {
