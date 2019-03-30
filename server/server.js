@@ -13,6 +13,10 @@ var {
     generateLocationMessage
 } = require('./utilities/messages');
 
+var {
+    validString
+} = require('./utilities/validations');
+
 io.on('connection', (socket) => {
     console.log("Connected to the user.");
 
@@ -21,6 +25,16 @@ io.on('connection', (socket) => {
         socket.emit('newMessage', generateMessage("Admin", "Welcome to the chat app."));
 
         socket.broadcast.emit('newMessage', generateMessage("Admin", "A new user has joined the app."));
+    });
+
+    socket.on('join', (params, callback) => {
+
+        if (!validString(params.name) || !validString(params.chat)) {
+
+            callback("Please enter a valid name and chat room.");
+        }
+
+        callback();
     });
 
     socket.on('createMessage', (message, callback) => {
