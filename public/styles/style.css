@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 /* 
 
 #left_panel {
@@ -682,4 +683,296 @@ body #right_content_panel {
     margin-left: 16px;
     margin-bottom: 8px;
     margin-right: 10px;
+}
+
+
+/* The left panel top profile section */
+
+#profile_image {
+    border: 2px solid #27ae60;
+    width: 80px;
+    height: 80px;
+
+}
+
+#info_inner_row {
+    margin-top: 20px;
+}
+
+#info_text_row {
+    margin-top: 6%;
+}
+
+#info_text {
+    font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+    #profile_image {
+        border: 2px solid #27ae60;
+        width: 60px;
+        height: 60px;
+        float: right;
+    }
+
+    #info_inner_row {
+        margin-top: 20px;
+    }
+
+    #info_text_row {
+        margin-top: 1%;
+    }
+
+    #info_text {
+        font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+        font-size: 20px;
+        float: left;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px)and (max-width: 768px) {
+    #profile_image {
+        border: 2px solid #27ae60;
+        width: 60px;
+        height: 60px;
+        float: right;
+    }
+
+    #info_inner_row {
+        margin-top: 20px;
+    }
+
+    #info_text_row {
+        margin-top: 1%;
+    }
+
+    #info_text {
+        font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+        font-size: 20px;
+        float: left;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    #profile_image {
+        border: 2px solid #27ae60;
+        width: 60px;
+        height: 60px;
+
+    }
+
+    #info_inner_row {
+        margin-top: 20px;
+    }
+
+    #info_text_row {
+        margin-top: 4%;
+    }
+
+    #info_text {
+        font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+        font-size: 18px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    #profile_image {
+        border: 2px solid #27ae60;
+        width: 70px;
+        height: 70px;
+
+    }
+
+    #info_inner_row {
+        margin-top: 20px;
+    }
+
+    #info_text_row {
+        margin-top: 6%;
+    }
+
+    #info_text {
+        font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+        font-size: 22px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #profile_image {
+        border: 2px solid #27ae60;
+        width: 80px;
+        height: 80px;
+
+    }
+
+    #info_inner_row {
+        margin-top: 20px;
+    }
+
+    #info_text_row {
+        margin-top: 6%;
+    }
+
+    #info_text {
+        font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+        font-size: 20px;
+    }
+}
+
+#left_panel_head {
+    background-color: #3a5269;
+
+}
+
+#left_panel_user_header {
+    height: 50px;
+    display: inline-table;
+}
+
+#left_panel_header_text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#contact_info_img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #27ae60;
+}
+
+#contact_info_col {
+    line-height: 1.5em;
+}
+
+#contact_info_text:first-child {
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+#contact_info_text:last-child {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+}
+
+@media only screen and (max-width: 600px) {
+    #contact_info_img {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #27ae60;
+        float: right;
+    }
+
+    #contact_info_col {
+        line-height: 1.5em;
+    }
+
+    #contact_info_text:first-child {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    #contact_info_text:last-child {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: lighter;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px)and (max-width: 768px) {
+    #contact_info_img {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #27ae60;
+        float: right;
+    }
+
+    #contact_info_col {
+        line-height: 1.5em;
+    }
+
+    #contact_info_text:first-child {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    #contact_info_text:last-child {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: lighter;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    #contact_info_img {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #27ae60;
+    }
+
+    #contact_info_col {
+        line-height: 1.5em;
+    }
+
+    #contact_info_text:first-child {
+        font-weight: bold;
+        margin-top: 6px;
+    }
+
+    #contact_info_text:last-child {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: lighter;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    #contact_info_img {
+        width: 60px;
+        height: 60px;
+        border: 2px solid #27ae60;
+    }
+
+    #contact_info_col {
+        line-height: 1.5em;
+    }
+
+    #contact_info_text:first-child {
+        font-weight: bold;
+        margin-top: 6px;
+    }
+
+    #contact_info_text:last-child {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: lighter;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #contact_info_img {
+        width: 50px;
+        height: 50px;
+        border: 2px solid #27ae60;
+    }
+
+    #contact_info_col {
+        line-height: 1.5em;
+    }
+
+    #contact_info_text:first-child {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    #contact_info_text:last-child {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: lighter;
+    }
 }
