@@ -42,6 +42,11 @@ socket.on('disconnect', function () {
     console.log("Disconnected from the server.");
 });
 
+socket.on('updatedUsersList', function (users) {
+    console.log(users);
+});
+
+
 socket.on(
     'newMessage',
     function (newMessage) {
@@ -58,12 +63,6 @@ socket.on(
         li.innerHTML = msgTemplate;
         document.getElementById('list_users').appendChild(li);
         automaticScrolling();
-        // console.log("New message has been received.", newMessage);
-        // var createdTime = moment(newMessage.timeStamp).format('h:mm a');
-        // var li = document.createElement('li');
-        // var text = document.createTextNode(`From: ${newMessage.from} - ${createdTime}, Text: ${newMessage.text}`);
-        // li.appendChild(text);
-        // document.getElementById('list_users').appendChild(li);
     }
 );
 
@@ -82,10 +81,6 @@ socket.on('newLocationMessage', function (LocaMessage) {
     document.getElementById('list_users').appendChild(li);
 
     automaticScrolling();
-    // var text = document.createTextNode(`From: ${LocaMessage.from} -- ${createdTime} `);
-    // li.appendChild(text);
-    // li.appendChild(a);
-    // document.getElementById('list_users').appendChild(li);
 });
 
 window.onload = function () {
@@ -111,7 +106,6 @@ window.onload = function () {
             alert('Geolocation is not supported by your browser.');
         }
         LocationBtn.setAttribute('disabled', 'disabled');
-        // LocationBtn.innerText = "Sending location";
 
 
         navigator.geolocation.getCurrentPosition((position) => {
@@ -120,13 +114,13 @@ window.onload = function () {
                     longitude: position.coords.longitude
                 });
                 LocationBtn.removeAttribute('disabled');
-                // LocationBtn.innerText = "Send location";
+
                 console.log(position);
             },
             (error) => {
                 alert("Unable to fetch the location.", error);
                 LocationBtn.removeAttribute('disabled');
-                // LocationBtn.innerText = "Send location";
+
             });
 
     });

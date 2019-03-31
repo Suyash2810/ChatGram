@@ -17,6 +17,12 @@ var {
     validString
 } = require('./utilities/validations');
 
+var {
+    Users
+} = require('./utilities/manageUsers');
+
+var users = new Users();
+
 io.on('connection', (socket) => {
     console.log("Connected to the user.");
 
@@ -24,12 +30,15 @@ io.on('connection', (socket) => {
 
         if (!validString(params.name) || !validString(params.chat)) {
 
-            callback("Please enter a valid name and chat room.");
+            return callback("Please enter a valid name and chat room.");
         }
 
         // When there is no error then we have to join the user to the particular room
 
         socket.join(params.chat);
+        users.removeUserFromList(socket.id);
+        users.addUserToList(socket.id, params.name, params.chat);
+        io.to(params.chat).emit('updatedUsersList', users.getUsersListByRoom(params.chat));
 
         // Sending greetings to the new user who has just joined the particular room
 
@@ -44,17 +53,27 @@ io.on('connection', (socket) => {
     });
 
     socket.on('createMessage', (message, callback) => {
-        io.emit('newMessage', generateMessage(message.from, message.text));
+        let room = users.getUserById(socket.id).room,
+            name = users.getUserById(socket.id).name;
+        io.to(room).emit('newMessage', generateMessage(name, message.text));
         callback();
     });
 
     socket.on('createLocationMessage', (position) => {
-
-        io.emit('newLocationMessage', generateLocationMessage('User', position.latitude, position.longitude));
+        let room = users.getUserById(socket.id).room,
+            name = users.getUserById(socket.id).name;;
+        io.to(room).emit('newLocationMessage', generateLocationMessage(name, position.latitude, position.longitude));
     });
 
     socket.on('disconnect', () => {
-        console.log("Disconnected from the user.");
+
+        let user = users.getUserById(socket.id);
+        users.removeUserFromList(socket.id);
+
+        io.to(user.room).emit('updatedUsersList', users.getUsersListByRoom(user.room));
+        io.to(user.room).emit('newMessage', generateMessage("Admin", `${user.name} has left the chat.`));
+
+
     });
 });
 

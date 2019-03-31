@@ -17,12 +17,12 @@ class Users {
 
     removeUserFromList(id) {
         var user = this.users.filter((user) => user.id === id)[0];
-        var UsersList = [];
+
         if (user) {
-            UsersList = this.users.filter((user) => user.id !== id);
+            this.users = this.users.filter((user) => user.id !== id);
         }
 
-        return UsersList;
+        return this.users;
     }
 
     getUserById(id) {
@@ -30,16 +30,9 @@ class Users {
     }
 
     getUsersListByRoom(room) {
-        var UsersList = [];
-        this.users.forEach(
-            (user) => {
-                if (user.room == room) {
-                    UsersList.push(user.name);
-                }
-            }
-        )
-
-        return UsersList;
+        var usersList = this.users.filter((user) => user.room === room);
+        var namesList = usersList.map((user) => user.name);
+        return namesList;
     }
 }
 
