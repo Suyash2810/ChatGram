@@ -47,7 +47,7 @@
                             <div class="col-md-8 col-sm-8 col-xs-8">
                                 <div class="row" id="info_text_row">
                                     <div class="col-md-12">
-                                        <h3 id="info_text">Deigo Sans</h3>
+                                        <h3 id="info_text">Welcome</h3>
                                     </div>
                                 </div>
                             </div>
@@ -67,21 +67,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="panel-body" id="left_panel_body">
                             <div id="contact_connect_info">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-3">
-                                        <img src="./imgs/casual-fashion-fine-looking-594610.jpg" alt=""
-                                            class="img-fluid img-responsive img-circle" id="contact_info_img">
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-9">
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-12 col-xs-12" id="contact_info_col">
-                                                <p style="font-size:16px;" id="contact_info_text">Eliot</p>
-                                                <p style="font-size:16px;" id="contact_info_text">Hey buddy how are..
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- Inserting connected user contacts -->
                             </div>
                         </div>
                     </div>
@@ -180,6 +166,24 @@
             </div>
         </div>
         
+    </script>
+
+    <script id="contact_template" type="text/template">
+        <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <img src="./imgs/casual-fashion-fine-looking-594610.jpg" alt=""
+                        class="img-fluid img-responsive img-circle" id="contact_info_img">
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12" id="contact_info_col">
+                            <p style="font-size:16px;" id="contact_info_text">{{name}}</p>
+                            <p style="font-size:16px;" id="contact_info_text">Connected
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </script>
 
     <script src="/socket.io/socket.io.js"></script>

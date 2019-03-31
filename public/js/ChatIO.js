@@ -44,6 +44,19 @@ socket.on('disconnect', function () {
 
 socket.on('updatedUsersList', function (users) {
     console.log(users);
+    var temp = ``;
+    var template = document.getElementById('contact_template').innerHTML;
+    users.forEach(
+        (user) => {
+            var data = {
+                name: user
+            };
+            var contact = Mustache.render(template, data);
+            temp += contact;
+        }
+    );
+
+    document.getElementById('contact_connect_info').innerHTML = temp;
 });
 
 
