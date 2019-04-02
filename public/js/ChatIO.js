@@ -34,6 +34,15 @@ socket.on('connect', function () {
             console.log("No error");
 
         }
+
+        socket.emit('validateName', params, function (error) {
+            if (error) {
+                alert(error);
+                window.location.href = '/';
+            } else {
+                console.log("No error");
+            }
+        });
     });
     socket.emit('greetings');
 });

@@ -36,11 +36,24 @@ io.on('connection', (socket) => {
         // When there is no error then we have to join the user to the particular room
 
         socket.join(params.chat);
-        users.removeUserFromList(socket.id);
+        console.log(socket.id);
+        // users.removeUserFromList(socket.id);
         users.addUserToList(socket.id, params.name, params.chat);
         io.to(params.chat).emit('updatedUsersList', users.getUsersListByRoom(params.chat));
-
         // Sending greetings to the new user who has just joined the particular room
+
+        socket.on('validateName', (params, callback) => {
+
+            let userList = users.getUsersListByRoom(params.chat);
+            console.log(userList);
+            let user = userList.filter(user => user === params.name);
+            console.log(user);
+
+            if (user.length !== 1) {
+                return callback("Username already used.");
+            }
+
+        });
 
         socket.on('greetings', () => {
 
@@ -70,8 +83,10 @@ io.on('connection', (socket) => {
         let user = users.getUserById(socket.id);
         users.removeUserFromList(socket.id);
 
-        io.to(user.room).emit('updatedUsersList', users.getUsersListByRoom(user.room));
-        io.to(user.room).emit('newMessage', generateMessage("Admin", `${user.name} has left the chat.`));
+        if (user) {
+            io.to(user.room).emit('updatedUsersList', users.getUsersListByRoom(user.room));
+            io.to(user.room).emit('newMessage', generateMessage("Admin", `${user.name} has left the chat.`));
+        }
 
 
     });
