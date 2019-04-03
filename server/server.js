@@ -14,7 +14,8 @@ var {
 } = require('./utilities/messages');
 
 var {
-    validString
+    validString,
+    validateName
 } = require('./utilities/validations');
 
 var {
@@ -45,11 +46,8 @@ io.on('connection', (socket) => {
         socket.on('validateName', (params, callback) => {
 
             let userList = users.getUsersListByRoom(params.chat);
-            console.log(userList);
-            let user = userList.filter(user => user === params.name);
-            console.log(user);
 
-            if (user.length !== 1) {
+            if (validateName(userList, params.name)) {
                 return callback("Username already used.");
             }
 

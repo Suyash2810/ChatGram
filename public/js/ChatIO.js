@@ -111,13 +111,17 @@ window.onload = function () {
         e.preventDefault();
 
         var text = document.getElementById('text_field');
-        socket.emit('createMessage', {
-            from: "User",
-            text: text.value,
-            timeStamp: new Date().getTime()
-        }, function () {
-            text.value = '';
-        });
+        if (text.value !== '' && text.value !== null) {
+            socket.emit('createMessage', {
+                from: "User",
+                text: text.value,
+                timeStamp: new Date().getTime()
+            }, function () {
+                text.value = '';
+            });
+        } else {
+            alert("Cannot send empty message.");
+        }
     });
 
     var LocationBtn = document.getElementById('getLocation');
