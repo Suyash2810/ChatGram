@@ -1,5 +1,6 @@
 var {
-    validString
+    validString,
+    validateName
 } = require('../utilities/validations');
 
 const expect = require('expect');
@@ -25,5 +26,44 @@ describe("String Validation", () => {
         expect(validString("  Hello  ")).toBe(true);
         expect(validString(' c ')).toBe(true);
         done();
+    });
+});
+
+describe("Users same name validation", () => {
+
+    it("should return true if two users with the same name exist", (done) => {
+        let listUser = [
+            "Eliot",
+            "Henry",
+            "Ryan",
+            "Flecther",
+            "James",
+            "James"
+        ];
+
+        let user = "James";
+
+        let result = validateName(listUser, user);
+
+        expect(result).toBe(true);
+        done();
+    });
+
+    it("should return undefined if only one user exists.", (done) => {
+        let listUser = [
+            "Eliot",
+            "Henry",
+            "Ryan",
+            "Flecther",
+            "James"
+        ];
+
+        let user = "Eliot";
+        let result = validateName(listUser, user);
+
+        expect(result).toBe(false);
+
+        done();
+
     });
 });

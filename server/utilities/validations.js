@@ -9,7 +9,7 @@ var validateName = (userList, name) => {
     if (user.length !== 1) {
         return true
     } else {
-        false
+        return false
     };
 }
 
