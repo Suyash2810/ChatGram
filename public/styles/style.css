@@ -286,7 +286,7 @@ body #left_panel {
     height: 96vh;
     background: #2c3e50;
     color: #f5f5f5;
-    overflow: hidden;
+    overflow: scroll;
     position: relative;
     border-top: solid 1px white;
 }
@@ -975,4 +975,8 @@ body #right_content_panel {
         font-family: 'Open Sans', sans-serif;
         font-weight: lighter;
     }
+}
+
+#left_panel {
+    overflow: scroll;
 }
