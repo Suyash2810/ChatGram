@@ -13,7 +13,31 @@ var validateName = (userList, name) => {
     };
 }
 
+var checkLetter = (username) => {
+    var letters = /^[A-Za-z]+$/;
+    return letters.test(username) ? true : false;
+}
+
+var checkDigits = (username) => {
+    let regex = /^[0-9]+$/;
+    return regex.test(username) ? true : false;
+}
+
+var validateLength = (username) => {
+    return username.length > 4 ? true : false;
+}
+
+var checkSpecialCharacters = (username) => {
+    let regex = /[!@#$%^&*(),.?":{}|<>]/;
+
+    return regex.test(username) ? true : false;
+}
+
 module.exports = {
     validString,
-    validateName
+    validateName,
+    checkLetter,
+    checkDigits,
+    validateLength,
+    checkSpecialCharacters
 }

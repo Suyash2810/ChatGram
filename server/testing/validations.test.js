@@ -1,6 +1,10 @@
 var {
     validString,
-    validateName
+    validateName,
+    checkLetter,
+    checkDigits,
+    validateLength,
+    checkSpecialCharacters
 } = require('../utilities/validations');
 
 const expect = require('expect');
@@ -65,5 +69,71 @@ describe("Users same name validation", () => {
 
         done();
 
+    });
+});
+
+describe("Check for letters", () => {
+    it("should return true if contains only letters", (done) => {
+        let username = "ss";
+        expect(checkLetter(username)).toBe(true);
+        done();
+    });
+
+    it("should return false if does not contain only characters.", (done) => {
+        let username = "12asws";
+
+        expect(checkLetter(username)).toBe(false);
+        done();
+    });
+});
+
+describe("Check for digits", () => {
+
+    it("should return true if contains only digits", (done) => {
+        let username = '1234456';
+        expect(checkDigits(username)).toBe(true);
+        done();
+    });
+
+    it("should return false if does not contain only digits", (done) => {
+
+        let username = "123Snehd";
+
+        expect(checkDigits(username)).toBe(false);
+        done();
+    });
+});
+
+describe("Check for length", () => {
+
+    it("should return true if length more than 4", (done) => {
+        let username = '1234456';
+        expect(validateLength(username)).toBe(true);
+        done();
+    });
+
+    it("should return false if does not contain only digits", (done) => {
+
+        let username = "12";
+
+        expect(validateLength(username)).toBe(false);
+        done();
+    });
+});
+
+describe("Check for special characters", () => {
+
+    it("should return true if there is special character.", (done) => {
+        let username = 'Hello$#@';
+        expect(checkSpecialCharacters(username)).toBe(true);
+        done();
+    });
+
+    it("should return false if does not contain special character", (done) => {
+
+        let username = "12HelloSire";
+
+        expect(checkSpecialCharacters(username)).toBe(false);
+        done();
     });
 });
