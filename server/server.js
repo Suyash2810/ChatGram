@@ -15,7 +15,10 @@ var {
 
 var {
     validString,
-    validateName
+    validateName,
+    checkLetter,
+    checkDigits,
+    checkSpecialCharacters
 } = require('./utilities/validations');
 
 var {
@@ -49,6 +52,18 @@ io.on('connection', (socket) => {
 
             if (validateName(userList, params.name)) {
                 return callback("Username already used.");
+            }
+
+            if (checkLetter(params.name)) {
+                return callback("Username should contain atleast one number.");
+            }
+
+            if (checkDigits(params.name)) {
+                return callback("Username should contain atleast one letter.");
+            }
+
+            if (checkSpecialCharacters(params.name)) {
+                return callback("Username should not contain any special character.");
             }
 
         });
