@@ -68,6 +68,14 @@ io.on('connection', (socket) => {
 
         });
 
+        socket.on("roomLimitValidate", (params, callback) => {
+            let userList = users.getUsersListByRoom(params.chat);
+
+            if (userList.length > 5) {
+                return callback("Room is full.");
+            }
+        });
+
         socket.on('greetings', () => {
 
             socket.emit('newMessage', generateMessage("Admin", `Welcome to the chat app. You're in room ${params.chat}.`));

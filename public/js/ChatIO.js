@@ -43,6 +43,15 @@ socket.on('connect', function () {
                 console.log("No error");
             }
         });
+
+        socket.emit("roomLimitValidate", params, function (error) {
+            if (error) {
+                alert(error);
+                window.location.href = '/';
+            } else {
+                console.log("Limit not exceeded");
+            }
+        });
     });
     socket.emit('greetings');
 });
