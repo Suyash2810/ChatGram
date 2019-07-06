@@ -18,7 +18,8 @@ var {
     validateName,
     checkLetter,
     checkDigits,
-    checkSpecialCharacters
+    checkSpecialCharacters,
+    validateLength
 } = require('./utilities/validations');
 
 var {
@@ -73,6 +74,19 @@ io.on('connection', (socket) => {
 
             if (userList.length > 5) {
                 return callback("Room is full.");
+            }
+        });
+
+        socket.on('roomNameValidate', (params, callback) => {
+
+            let roomName = params.chat;
+
+            if (checkSpecialCharacters(roomName)) {
+                callback("Room Name shouldn't contain any special characters.");
+            }
+
+            if (validateLength(roomName)) {
+                callback("Room name should not be more than 10 characters long.");
             }
         });
 

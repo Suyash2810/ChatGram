@@ -52,6 +52,15 @@ socket.on('connect', function () {
                 console.log("Limit not exceeded");
             }
         });
+
+        socket.emit('roomNameValidate', params, function (error) {
+            if (error) {
+                alert(error);
+                window.location.href = '/';
+            } else {
+                console.log("Room name is valid. Welcome.");
+            }
+        });
     });
     socket.emit('greetings');
 });

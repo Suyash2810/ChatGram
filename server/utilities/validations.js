@@ -24,7 +24,7 @@ var checkDigits = (username) => {
 }
 
 var validateLength = (username) => {
-    return username.length > 4 ? true : false;
+    return username.length > 10 ? true : false;
 }
 
 var checkSpecialCharacters = (username) => {
