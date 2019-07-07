@@ -68,5 +68,6 @@ There are validations that have been done on the username and room. The user wil
 
 ## License
 
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Suyash2810/Chat_IO_App/blob/master/LICENSE) file for details.
 
 
