@@ -10,14 +10,14 @@ ChatGram is implemented in nodejs using the socket.io module. One can access it 
 
 In ChatGram one can create a room using a specific username followed by the room name. Once a room is created, other people can join the same room. However there is a limit that has been set for the number of users in a room. 
 
-```
+
 To change the limit of users in a particular room, follow the steps below.
 
-1. Go to validations.js file.
-2. Find this [function](./public/imgs/RoomLengthValidation.png)
-3. Replace the number to the limit required.
+* Go to validations.js file.
+* Find this [function](./public/imgs/RoomLengthValidation.png)
+* Replace the number to the limit required.
 
-```
+
 
 ### Note: 
 
