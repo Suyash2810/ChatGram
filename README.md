@@ -57,6 +57,8 @@ The project can be run in two ways.
 
 ```
 
+* One can access the working sample of the project [here](https://whispering-refuge-60065.herokuapp.com/)
+
 
 ### NOTE:
           
