@@ -980,3 +980,10 @@ body #right_content_panel {
 #left_panel {
     overflow: scroll;
 }
+
+#message_panel_body {
+    font-size: 26px;
+    background-color: whitesmoke;
+    color: darkgrey;
+    margin-bottom: 30px;
+}
